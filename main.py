@@ -20,7 +20,7 @@ c = pygame.time.Clock()
 AIR_DENSITY = 1.225 #Air density, in kg/m^3
 GRAVITY = 9.8
 UP_DIR = np.pi / 2
-
+VISUAL_FACTOR=100 #Ratio of meters to pixels
 class PhysObj():
 
     #Figure out type annotations and change mass to KG, force to Netwons, and x/y, velocity and acceleration all to meters
@@ -67,10 +67,10 @@ class PhysObj():
         self.velocity[0] += (self.acceleration[0]*c.get_time())/1000
         self.velocity[1] += (self.acceleration[1]*c.get_time())/1000
 
-        self.x += (((self.velocity)[0] * c.get_time())/1000)*100
+        self.x += (((self.velocity)[0] * c.get_time())/1000)*VISUAL_FACTOR
 
         #-= because up is down in python
-        self.y -= (((self.velocity)[1] * c.get_time())/1000)*100
+        self.y -= (((self.velocity)[1] * c.get_time())/1000)*VISUAL_FACTOR
 
         if self.y >= 1020:
             self.y=1020
